@@ -9,7 +9,7 @@ namespace GAuth_CSharp.Core
 {
     public class GAuthCore : GAuth
     {
-        private readonly HttpClient _httpClient;
+        private readonly HttpClient _httpClient = new HttpClient();
         private readonly string GAuthServerURL = "https://server.gauth.co.kr/oauth";
         private readonly string ResourceServerURL = "https://open.gauth.co.kr";
 
@@ -17,11 +17,6 @@ namespace GAuth_CSharp.Core
         {
             Access,
             Refresh
-        }
-
-        public GAuthCore()
-        {
-            _httpClient = new HttpClient();
         }
 
         public async Task<GAuthToken> GenerateToken(string email, string password, string clientId, string clientSecret, string redirectUri)
